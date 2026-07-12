@@ -11,7 +11,7 @@
   <!-- Apply the stored theme before first paint (no flash). Loaded without defer. -->
   <script src="../assets/js/theme.js"></script>
 
-  <!-- EB Garamond -->
+  <!-- EB Garamond (display) + Source Serif 4 (text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
 </head>
 <body>
   <div class="page">
-    <div class="col">
 
-      <!-- ══ NAV ══ -->
-      <nav class="nav" aria-label="Primary">
+    <!-- ══ NAV ══ -->
+    <nav class="nav" aria-label="Primary">
+      <div class="wrap nav__inner">
         <a class="nav__brand" href="../index.html">Yimiao Yu</a>
         <div class="nav__links">
           <a class="nav__link" href="../index.html">About</a>
@@ -35,32 +35,38 @@
             <span data-theme-label>Dark</span>
           </button>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <main>
+    <main>
 
-        <!-- ══ PAGE HEADER ══ -->
-        <section class="section" aria-labelledby="blog-label">
-          <div class="section-head" data-reveal>
-            <div class="section-head__ornament" aria-hidden="true">⁂</div>
-            <div class="section-head__label" id="blog-label">Blog</div>
+      <!-- ══ PAGE MASTHEAD ══ -->
+      <div class="wrap">
+        <header class="page-head">
+          <div class="section-head__ornament" aria-hidden="true">⁂</div>
+          <h1 class="page-head__title">Blog</h1>
+          <div class="rule-single" aria-hidden="true"></div>
+        </header>
+        <p class="page-tagline">The first pages of this journal are yet to be written — notes on the science of deep learning are coming.</p>
+      </div>
+
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="footer">
+      <div class="wrap">
+        <p class="footer__motto">— the adventure continues —</p>
+        <div class="footer__inner">
+          <span class="footer__name">Yimiao Yu</span>
+          <span class="footer__copy">© 2026 — New York, NY</span>
+          <div class="footer__links">
+            <a href="mailto:yy5915@nyu.edu">Email</a>
+            <a href="https://github.com/feima3333">GitHub</a>
           </div>
-          <p class="masthead__tagline" style="margin-inline: auto;">No posts yet — first notes on the science of deep learning are coming.</p>
-        </section>
-
-      </main>
-
-      <!-- ══ FOOTER ══ -->
-      <footer class="footer">
-        <span class="footer__name">Yimiao Yu</span>
-        <span class="footer__copy">© 2026 — New York, NY</span>
-        <div class="footer__links">
-          <a href="mailto:yy5915@nyu.edu">Email</a>
-          <a href="https://github.com/feima3333">GitHub</a>
         </div>
-      </footer>
+      </div>
+    </footer>
 
-    </div>
   </div>
 </body>
 </html>

@@ -11,7 +11,7 @@
   <!-- Apply the stored theme before first paint (no flash). Loaded without defer. -->
   <script src="assets/js/theme.js"></script>
 
-  <!-- EB Garamond -->
+  <!-- EB Garamond (display) + Source Serif 4 (text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
 </head>
 <body>
   <div class="page">
-    <div class="col">
 
-      <!-- ══ NAV ══ -->
-      <nav class="nav" aria-label="Primary">
+    <!-- ══ NAV ══ -->
+    <nav class="nav" aria-label="Primary">
+      <div class="wrap nav__inner">
         <a class="nav__brand" href="index.html">Yimiao Yu</a>
         <div class="nav__links">
           <a class="nav__link nav__link--active" href="index.html" aria-current="page">About</a>
@@ -35,39 +35,42 @@
             <span data-theme-label>Dark</span>
           </button>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <main>
+    <main>
 
-        <!-- ══ HERO: masthead + photo (side by side on wide screens) ══ -->
-        <div class="hero">
-        <header class="masthead">
-          <div class="masthead__eyebrow">M.S. Data Science · NYU Center for Data Science</div>
-          <div class="rule-double" aria-hidden="true"></div>
-          <h1 class="masthead__title">Yimiao Yu</h1>
-          <p class="masthead__tagline">Studying how deep networks memorize — and what pure noise can still teach them.</p>
-          <div class="rule-single" aria-hidden="true"></div>
-          <div class="masthead__contact">
-            <span class="nowrap">New York, NY</span><span class="sep" aria-hidden="true">·</span>
-            <a href="mailto:yy5915@nyu.edu">yy5915@nyu.edu</a><span class="sep" aria-hidden="true">·</span>
-            <a href="https://github.com/feima3333">github.com/feima3333</a>
-          </div>
-          <div class="masthead__status">
-            <span class="masthead__status-dot" aria-hidden="true"></span>
-            Open to research collaborations &amp; internships
-          </div>
-        </header>
-
-        <div class="photo">
-          <div class="photo__frame">
-            <img class="photo__img" src="assets/img/photo-full.jpg"
-                 alt="Yimiao Yu photographed outdoors" width="460" height="345">
+      <!-- ══ HERO: masthead + hero-card photo ══ -->
+      <section class="band band--hero">
+        <div class="wrap hero">
+          <header class="masthead">
+            <div class="masthead__eyebrow">M.S. Data Science · NYU Center for Data Science</div>
+            <div class="rule-double" aria-hidden="true"></div>
+            <h1 class="masthead__title">Yimiao Yu</h1>
+            <p class="masthead__tagline">Studying how deep networks memorize — and what pure noise can still teach them.</p>
+            <div class="rule-single" aria-hidden="true"></div>
+            <div class="masthead__contact">
+              <span class="nowrap">New York, NY</span><span class="sep" aria-hidden="true">·</span>
+              <a href="mailto:yy5915@nyu.edu">yy5915@nyu.edu</a><span class="sep" aria-hidden="true">·</span>
+              <a href="https://github.com/feima3333">github.com/feima3333</a>
+            </div>
+            <div class="masthead__status">
+              <span class="masthead__status-dot" aria-hidden="true"></span>
+              Open to new quests — collaborations &amp; internships
+            </div>
+          </header>
+          <div class="photo">
+            <div class="photo__frame">
+              <img class="photo__img" src="assets/img/photo-full.jpg"
+                   alt="Yimiao Yu photographed outdoors" width="1600" height="1066">
+            </div>
           </div>
         </div>
-        </div><!-- /hero -->
+      </section>
 
-        <!-- ══ ABOUT ══ -->
-        <section class="section" aria-labelledby="about-label">
+      <!-- ══ ABOUT ══ -->
+      <section class="band band--alt" aria-labelledby="about-label">
+        <div class="wrap">
           <div class="section-head" data-reveal>
             <div class="section-head__ornament" aria-hidden="true">⁂</div>
             <div class="section-head__label" id="about-label">About</div>
@@ -77,20 +80,65 @@
             <p class="prose__secondary">Before New York I studied data science in Zhoushan, an island city in China — B.S. at Zhejiang Ocean University, 2025.</p>
           </div>
 
-          <div class="timeline" data-reveal>
-            <div class="timeline__row">
-              <span class="timeline__years">2025 — 2027</span>
-              <span class="timeline__detail">M.S. Data Science, <span class="muted">NYU Center for Data Science — New York</span></span>
+          <div class="duo" data-reveal>
+            <div>
+              <h3 class="duo__title">Interests</h3>
+              <ul class="duo__list">
+                <li><span class="fleuron" aria-hidden="true">❧</span>Science of deep learning</li>
+                <li><span class="fleuron" aria-hidden="true">❧</span>Memorization &amp; transfer</li>
+                <li><span class="fleuron" aria-hidden="true">❧</span>Scaling laws</li>
+              </ul>
             </div>
-            <div class="timeline__row">
-              <span class="timeline__years">— 2025</span>
-              <span class="timeline__detail">B.S. Data Science, <span class="muted">Zhejiang Ocean University — Zhoushan</span></span>
+            <div>
+              <h3 class="duo__title">Education</h3>
+              <ul class="duo__list">
+                <li class="edu__detail">
+                  <span class="edu__years">2025 — 2027</span>
+                  M.S. Data Science
+                  <span class="muted">NYU Center for Data Science — New York</span>
+                </li>
+                <li class="edu__detail">
+                  <span class="edu__years">— 2025</span>
+                  B.S. Data Science
+                  <span class="muted">Zhejiang Ocean University — Zhoushan</span>
+                </li>
+              </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- ══ RESEARCH ══ -->
-        <section class="section section--research" aria-labelledby="research-label">
+      <!-- ══ ADVENTURE LOG ══ -->
+      <section class="band" aria-labelledby="log-label">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="section-head__ornament" aria-hidden="true">⁂</div>
+            <div class="section-head__label" id="log-label">Adventure Log</div>
+          </div>
+          <div class="log" data-reveal>
+            <div class="log__row">
+              <span class="log__date">Jul ’26</span>
+              <p class="log__text">Working paper with Florentin Guth — <em>Scaling Laws and Transfer Effects in Random Label Memorization</em> — targeting a NeurIPS workshop.</p>
+            </div>
+            <div class="log__row">
+              <span class="log__date">Dec ’25</span>
+              <p class="log__text">Measured gender bias in 89,893 RateMyProfessor evaluations of teaching: a small but significant pro-male effect.</p>
+            </div>
+            <div class="log__row">
+              <span class="log__date">Nov ’25</span>
+              <p class="log__text">Hypothesis-testing quest on 400 films and 1,000+ raters — popularity predicts rating.</p>
+            </div>
+            <div class="log__row">
+              <span class="log__date">Sep ’25</span>
+              <p class="log__text">A new chapter begins: started the M.S. in Data Science at NYU, New York.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ RESEARCH ══ -->
+      <section class="band band--alt" aria-labelledby="research-label">
+        <div class="wrap">
           <div class="section-head" data-reveal>
             <div class="section-head__ornament" aria-hidden="true">⁂</div>
             <div class="section-head__label" id="research-label">Research</div>
@@ -101,21 +149,26 @@
             <div class="paper__authors">Yimiao Yu &amp; Florentin Guth — NYU Center for Data Science</div>
             <p class="paper__summary">Pretraining on one random-label assignment accelerates memorizing a different one. The effect survives random-pixel inputs, requires a consistent input–output mapping, and is carried mainly by convolutional weights.</p>
           </article>
-        </section>
-
-      </main>
-
-      <!-- ══ FOOTER ══ -->
-      <footer class="footer">
-        <span class="footer__name">Yimiao Yu</span>
-        <span class="footer__copy">© 2026 — New York, NY</span>
-        <div class="footer__links">
-          <a href="mailto:yy5915@nyu.edu">Email</a>
-          <a href="https://github.com/feima3333">GitHub</a>
         </div>
-      </footer>
+      </section>
 
-    </div>
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="footer">
+      <div class="wrap">
+        <p class="footer__motto">— the adventure continues —</p>
+        <div class="footer__inner">
+          <span class="footer__name">Yimiao Yu</span>
+          <span class="footer__copy">© 2026 — New York, NY</span>
+          <div class="footer__links">
+            <a href="mailto:yy5915@nyu.edu">Email</a>
+            <a href="https://github.com/feima3333">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
 </body>
 </html>

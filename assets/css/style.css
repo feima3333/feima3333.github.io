@@ -1,17 +1,24 @@
 /* ============================================================================
    Yimiao Yu — Personal website
-   "Letterpress" design system (shared across About / Publications / CV / Blog)
+   "Letterpress, with a wink" design system v2
+
+   Full-width banded layout (no side rails): sections are horizontal bands
+   that alternate background tone, in the manner of clean academic pages.
+   The letterpress voice (EB Garamond display, ⁂ ornaments, double rules)
+   stays; a few quiet adventurer touches (hero-card photo frame, the
+   Adventure Log, "open to new quests") give it play without costume.
 
    Sections:
      1. Tokens        — oklch custom properties, light + dark
      2. Base          — reset, typography defaults, links, selection
-     3. Layout        — centered 1020px column with hairline rails
+     3. Layout        — bands + centered inner wrap
      4. Nav           — sticky, backdrop-blur, theme-toggle pill
-     5. Masthead      — eyebrow, rules, H1, tagline, contact, status
-     6. Sections      — section header pattern (ornament + small-caps label)
-     7. Components     — photo frame, prose + drop cap, timeline, research entry
+     5. Hero          — masthead (left) + hero-card photo (right)
+     6. Section heads — ⁂ ornament + small-caps label
+     7. Components    — prose, interests/education duo, adventure log,
+                        research entry, project list, page masthead
      8. Footer
-     9. Motion         — keyframes, load sequence, scroll reveals
+     9. Motion        — keyframes, load sequence, scroll reveals
     10. Responsive
    ============================================================================ */
 
@@ -20,6 +27,7 @@
    ============================================================================ */
 :root {
   --bg: oklch(0.955 0.02 88);            /* warm cream          */
+  --band-alt: oklch(0.932 0.023 88);     /* darker cream band   */
   --panel: oklch(0.925 0.026 88);        /* photo mat           */
   --ink: oklch(0.28 0.016 75);
   --ink-2: oklch(0.44 0.018 78);
@@ -33,11 +41,12 @@
 
   --font: 'Source Serif 4', Georgia, serif;          /* text face — sturdy on screen */
   --font-display: 'EB Garamond', Georgia, serif;     /* display face — letterpress   */
-  --col-width: 1020px;
+  --wrap-width: 1060px;
 }
 
 :root[data-theme="dark"] {
   --bg: oklch(0.215 0.014 72);           /* warm charcoal       */
+  --band-alt: oklch(0.243 0.015 74);     /* lighter charcoal    */
   --panel: oklch(0.245 0.016 74);
   --ink: oklch(0.915 0.02 88);
   --ink-2: oklch(0.76 0.02 85);
@@ -108,7 +117,7 @@ button:focus-visible {
 }
 
 /* ============================================================================
-   3. LAYOUT — centered column with full-height hairline rails
+   3. LAYOUT — full-width bands, centered inner wrap
    ============================================================================ */
 .page {
   min-height: 100vh;
@@ -116,15 +125,28 @@ button:focus-visible {
   flex-direction: column;
 }
 
-.col {
+.page > main {
+  flex: 1;
+}
+
+.wrap {
   width: 100%;
-  max-width: var(--col-width);
-  margin: 0 auto;
-  border-left: 1px solid var(--line-soft);
-  border-right: 1px solid var(--line-soft);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  max-width: var(--wrap-width);
+  margin-inline: auto;
+  padding-inline: 48px;
+}
+
+.band {
+  padding: 64px 0 72px;
+}
+
+.band--alt {
+  background: var(--band-alt);
+  transition: background 0.4s ease;
+}
+
+.band--hero {
+  padding: 0;
 }
 
 /* ============================================================================
@@ -134,15 +156,18 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 18px 48px;
   border-bottom: 1px solid var(--line-soft);
   background: var(--nav-bg);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+}
+
+.nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-block: 18px;
 }
 
 .nav__brand {
@@ -206,14 +231,21 @@ button:focus-visible {
 }
 
 /* ============================================================================
-   5. MASTHEAD
+   5. HERO — masthead text (left) + hero-card photo (right)
    ============================================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 64px;
+  align-items: center;
+  padding-block: 76px 72px;
+}
+
 .masthead {
-  text-align: center;
-  padding: 72px 72px 58px;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .masthead__eyebrow {
@@ -238,18 +270,18 @@ button:focus-visible {
 }
 
 .masthead__title {
-  margin-top: 30px;
+  margin-top: 28px;
   font-family: var(--font-display);
-  font-size: clamp(72px, 10vw, 108px);
+  font-size: clamp(52px, 6.5vw, 84px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.01em;
 }
 
 .masthead__tagline {
-  margin-top: 26px;
+  margin-top: 24px;
   font-family: var(--font-display);
-  font-size: 27px;
+  font-size: 26px;
   font-style: italic;
   font-weight: 400;
   color: var(--ink-2);
@@ -259,18 +291,17 @@ button:focus-visible {
 }
 
 .masthead .rule-single {
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .masthead__contact {
-  margin-top: 24px;
+  margin-top: 22px;
   font-size: 15px;
   color: var(--ink-2);
   display: flex;
   gap: 14px;
   align-items: baseline;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .masthead__contact .nowrap {
@@ -296,9 +327,7 @@ button:focus-visible {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 9px;
+  line-height: 1.7;
 }
 
 .masthead__status-dot {
@@ -306,25 +335,45 @@ button:focus-visible {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
+  display: inline-block;
+  vertical-align: 2px;
+  margin-right: 7px;
+}
+
+/* --- Hero-card photo: framed plate with an outer hairline, like a card --- */
+.photo {
+  justify-self: end;
+  width: 100%;
+  max-width: 400px;
+}
+
+.photo__frame {
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line-soft);
+  outline-offset: 5px;
+  padding: 10px;
+  background: var(--panel);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.photo__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 30% 20%;
+  filter: var(--photo-filter);
 }
 
 /* ============================================================================
-   6. SECTIONS — shared header pattern (⁂ ornament + small-caps label)
+   6. SECTION HEADS — ⁂ ornament + small-caps label, centered
    ============================================================================ */
-.section {
-  padding: 58px 72px;
-  border-top: 1px solid var(--line-soft);
-  text-align: center;
-}
-
-.section--research {
-  padding: 58px 72px 66px;
-}
-
 .section-head {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .section-head__ornament {
@@ -345,34 +394,10 @@ button:focus-visible {
    7. COMPONENTS
    ============================================================================ */
 
-/* --- Framed photo --- */
-.photo {
-  display: flex;
-  justify-content: center;
-  padding: 0 72px 64px;
-}
-
-.photo__frame {
-  border: 1px solid var(--line);
-  padding: 10px;
-  background: var(--panel);
-  transition: background 0.4s ease, border-color 0.4s ease;
-}
-
-.photo__img {
-  display: block;
-  width: 460px;
-  max-width: 74vw;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: 30% 12%;
-  filter: var(--photo-filter);
-}
-
 /* --- Prose + drop cap --- */
 .prose {
   margin: 30px auto 0;
-  max-width: 58ch;
+  max-width: 62ch;
   text-align: left;
   font-size: 18px;
   line-height: 1.7;
@@ -394,43 +419,111 @@ button:focus-visible {
   color: var(--ink-2);
 }
 
-/* --- Education timeline --- */
-.timeline {
-  margin: 44px auto 0;
-  max-width: 58ch;
-  border-top: 1px solid var(--line-soft);
+.muted {
+  color: var(--ink-2);
+}
+
+/* --- Interests / Education duo (side-by-side columns under the bio) --- */
+.duo {
+  margin: 48px auto 0;
+  max-width: 62ch;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px 64px;
   text-align: left;
 }
 
-.timeline__row {
+.duo__title {
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.duo__list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.duo__list li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.duo__list li.edu__detail {
+  padding-left: 0;
+}
+
+.duo__list .fleuron {
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-display);
+}
+
+.edu__years {
+  display: block;
+  font-family: var(--font-display);
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 14.5px;
+  color: var(--accent);
+}
+
+.edu__detail .muted {
+  display: block;
+  font-size: 15px;
+}
+
+/* --- Adventure log: dated news rows --- */
+.log {
+  margin: 34px auto 0;
+  max-width: 62ch;
+  text-align: left;
+  border-top: 1px solid var(--line-soft);
+}
+
+.log__row {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 18px 0;
+  grid-template-columns: 92px 1fr;
+  gap: 20px;
+  padding: 15px 0;
   border-bottom: 1px solid var(--line-soft);
   align-items: baseline;
 }
 
-.timeline__years {
+.log__date {
   font-family: var(--font-display);
-  font-size: 15px;
   font-variant: small-caps;
   letter-spacing: 0.12em;
+  font-size: 15px;
   color: var(--accent);
+  white-space: nowrap;
 }
 
-.timeline__detail {
-  font-size: 17px;
-}
-
-.timeline__detail .muted {
+.log__text {
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--ink-2);
+}
+
+.log__text em {
+  color: var(--ink);
 }
 
 /* --- Research entry --- */
 .paper {
   margin: 32px auto 0;
   max-width: 60ch;
+  text-align: center;
 }
 
 .paper__meta {
@@ -465,13 +558,94 @@ button:focus-visible {
   text-wrap: pretty;
 }
 
+/* --- Page masthead (Publications / Blog): smaller than the home hero --- */
+.page-head {
+  text-align: center;
+  padding: 56px 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-head__title {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.page-head .rule-single {
+  margin-top: 26px;
+}
+
+.page-tagline {
+  margin: 26px auto 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--ink-2);
+  max-width: 24em;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* --- Compact list row for "Selected Projects": date column + body --- */
+.pub-list {
+  margin: 32px auto 0;
+  max-width: 60ch;
+  border-top: 1px solid var(--line-soft);
+  text-align: left;
+}
+
+.pub-list__row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.pub-list__date {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.pub-list__title {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.pub-list__desc {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
 /* ============================================================================
    8. FOOTER
    ============================================================================ */
 .footer {
-  margin-top: auto;
   border-top: 3px double var(--line);
-  padding: 26px 48px;
+  padding-block: 26px 30px;
+}
+
+.footer__motto {
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-3);
+  margin-bottom: 20px;
+}
+
+.footer__inner {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -481,6 +655,7 @@ button:focus-visible {
 }
 
 .footer__name {
+  font-family: var(--font-display);
   font-size: 16px;
   color: var(--ink);
   white-space: nowrap;
@@ -536,15 +711,20 @@ button:focus-visible {
 /* --- Masthead load sequence --- */
 .masthead__eyebrow { animation: fadeUp 0.7s ease both; }
 .masthead__title   { animation: fadeUp 0.8s ease 0.1s both; }
-.masthead .rule-double { animation: ruleGrow 0.9s ease 0.15s both; }
+.masthead .rule-double { animation: ruleGrow 0.9s ease 0.15s both; transform-origin: left; }
 .masthead__tagline { animation: fadeUp 0.8s ease 0.22s both; }
-.masthead .rule-single { animation: ruleGrow 0.9s ease 0.3s both; }
+.masthead .rule-single { animation: ruleGrow 0.9s ease 0.3s both; transform-origin: left; }
 .masthead__contact { animation: fadeUp 0.8s ease 0.34s both; }
 .masthead__status  { animation: fadeUp 0.8s ease 0.42s both; }
 
 .photo__frame { animation: photoIn 1.1s ease 0.4s both; }
 
 .masthead__status-dot { animation: pulse 2.6s ease-in-out infinite; }
+
+/* Page masthead load-in (Publications / Blog) */
+.page-head .section-head__ornament { animation: fadeUp 0.7s ease both; }
+.page-head__title { animation: fadeUp 0.8s ease 0.1s both; }
+.page-head .rule-single { animation: ruleGrow 0.9s ease 0.22s both; }
 
 /* --- Scroll reveals: CSS-only, progressive enhancement.
        Content stays visible where animation-timeline is unsupported. --- */
@@ -566,7 +746,10 @@ button:focus-visible {
   .masthead__contact,
   .masthead__status,
   .photo__frame,
-  .masthead__status-dot {
+  .masthead__status-dot,
+  .page-head .section-head__ornament,
+  .page-head__title,
+  .page-head .rule-single {
     animation: none;
   }
 
@@ -578,11 +761,46 @@ button:focus-visible {
 }
 
 /* ============================================================================
-   10. RESPONSIVE  (does not alter the desktop design)
+   10. RESPONSIVE
    ============================================================================ */
+@media (max-width: 880px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-block: 56px 60px;
+  }
+
+  .masthead {
+    text-align: center;
+    align-items: center;
+  }
+
+  .masthead .rule-double,
+  .masthead .rule-single {
+    transform-origin: center;
+  }
+
+  .masthead__contact {
+    justify-content: center;
+  }
+
+  .photo {
+    justify-self: center;
+    max-width: min(400px, 78vw);
+  }
+}
+
 @media (max-width: 640px) {
-  .nav {
-    padding: 16px 24px;
+  .wrap {
+    padding-inline: 24px;
+  }
+
+  .band {
+    padding: 44px 0 52px;
+  }
+
+  .nav__inner {
+    padding-block: 14px;
     flex-wrap: wrap;
     gap: 14px;
   }
@@ -594,192 +812,34 @@ button:focus-visible {
     justify-content: flex-end;
   }
 
-  .masthead__status {
-    display: block;
-    text-align: center;
+  .duo {
+    grid-template-columns: 1fr;
   }
 
-  .masthead__status-dot {
-    display: inline-block;
-    vertical-align: 2px;
-    margin-right: 6px;
+  .page-head {
+    padding-top: 40px;
   }
 
-  .masthead {
-    padding: 48px 24px 44px;
-  }
-
-  .photo {
-    padding: 0 24px 48px;
-  }
-
-  .section,
-  .section--research {
-    padding: 44px 24px;
-  }
-
-  .timeline__row {
+  .pub-list__row {
     grid-template-columns: 110px 1fr;
     gap: 16px;
   }
 
-  .footer {
-    padding: 24px;
+  .footer__inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 }
 
-@media (max-width: 380px) {
-  .timeline__row {
+@media (max-width: 420px) {
+  .log__row {
     grid-template-columns: 1fr;
     gap: 4px;
   }
-}
 
-/* ============================================================================
-   11. PUBLICATIONS PAGE — small additive block (publications.html only)
-   Everything else on that page reuses existing tokens/classes above
-   (.section, .section-head, .paper, .rule-single, etc). Only two things
-   here are genuinely new: a smaller page masthead, and a compact list row
-   with a year/date column for the "Selected Projects" entries.
-   ============================================================================ */
-
-/* --- Page masthead: smaller than the home masthead, one H1 only --- */
-.page-head {
-  text-align: center;
-  padding: 56px 72px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.page-head__title {
-  margin-top: 14px;
-  font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 56px);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-}
-
-.page-head .rule-single {
-  margin-top: 26px;
-}
-
-/* Load-in motion, matching the home masthead's entrance (reuses existing keyframes). */
-.page-head .section-head__ornament { animation: fadeUp 0.7s ease both; }
-.page-head__title { animation: fadeUp 0.8s ease 0.1s both; }
-.page-head .rule-single { animation: ruleGrow 0.9s ease 0.22s both; }
-
-@media (prefers-reduced-motion: reduce) {
-  .page-head .section-head__ornament,
-  .page-head__title,
-  .page-head .rule-single {
-    animation: none;
-  }
-}
-
-/* --- Compact list row for "Selected Projects": date column + title/desc body --- */
-.pub-list {
-  margin: 32px auto 0;
-  max-width: 60ch;
-  border-top: 1px solid var(--line-soft);
-  text-align: left;
-}
-
-.pub-list__row {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.pub-list__date {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-variant: small-caps;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-}
-
-.pub-list__title {
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.pub-list__desc {
-  margin-top: 6px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-
-@media (max-width: 640px) {
-  .page-head {
-    padding: 40px 24px 32px;
-  }
-
-  .pub-list__row {
-    grid-template-columns: 110px 1fr;
-    gap: 16px;
-  }
-
-}
-
-@media (max-width: 380px) {
   .pub-list__row {
     grid-template-columns: 1fr;
     gap: 4px;
-  }
-}
-
-/* ============================================================================
-   12. WIDE SCREENS — side-by-side hero so large monitors read as a spread,
-   not a title slide. Below 1100px the stacked centered masthead is unchanged.
-   ============================================================================ */
-@media (min-width: 1100px) {
-  :root {
-    --col-width: 1180px;
-  }
-
-  .hero {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-  }
-
-  .hero .masthead {
-    text-align: left;
-    align-items: flex-start;
-    padding: 96px 32px 96px 88px;
-  }
-
-  .hero .masthead__title {
-    font-size: clamp(60px, 5.8vw, 84px);
-  }
-
-  .hero .masthead__contact {
-    justify-content: flex-start;
-  }
-
-  .hero .photo {
-    padding: 88px 88px 88px 32px;
-    justify-content: flex-end;
-  }
-
-  .hero .photo__frame {
-    width: 100%;
-    max-width: 420px;
-  }
-
-  .hero .photo__img {
-    width: 100%;
-    height: auto; /* release the height="" attribute so aspect-ratio wins */
-    max-width: none;
-    aspect-ratio: 4 / 5;
-    object-position: 30% 20%;
   }
 }
