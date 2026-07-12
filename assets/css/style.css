@@ -318,10 +318,6 @@ button:focus-visible {
   padding: 58px 72px 66px;
 }
 
-.section--cv {
-  padding-bottom: 72px;
-}
-
 .section-head {
   display: flex;
   flex-direction: column;
@@ -340,51 +336,6 @@ button:focus-visible {
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--accent);
-}
-
-/* --- Embedded CV reader --- */
-.cv-intro {
-  margin: 18px auto 0;
-  max-width: 48ch;
-  color: var(--ink-2);
-  font-size: 17px;
-}
-
-.cv-actions {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.cv-actions .theme-toggle {
-  display: inline-flex;
-}
-
-.cv-download {
-  color: var(--ink-2);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
-}
-
-.cv-reader {
-  margin-top: 32px;
-  padding: 9px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  transition: background 0.4s ease, border-color 0.4s ease;
-}
-
-.cv-reader iframe {
-  display: block;
-  width: 100%;
-  height: min(78vh, 960px);
-  min-height: 640px;
-  border: 0;
-  background: #fff;
 }
 
 /* ============================================================================
@@ -768,24 +719,6 @@ button:focus-visible {
     gap: 16px;
   }
 
-  .section--cv {
-    padding: 44px 16px 48px;
-  }
-
-  .cv-actions {
-    flex-wrap: wrap;
-    gap: 14px 18px;
-  }
-
-  .cv-reader {
-    margin-top: 26px;
-    padding: 5px;
-  }
-
-  .cv-reader iframe {
-    height: 72vh;
-    min-height: 520px;
-  }
 }
 
 @media (max-width: 380px) {
