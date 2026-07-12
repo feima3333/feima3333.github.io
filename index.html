@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yimiao Yu</title>
+  <meta name="description" content="Yimiao Yu is a data science master's student at NYU working on the science of deep learning — how deep networks memorize random labels, and what that memorization can teach us.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+
+  <!-- Apply the stored theme before first paint (no flash). Loaded without defer. -->
+  <script src="assets/js/theme.js"></script>
+
+  <!-- EB Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="col">
+
+      <!-- ══ NAV ══ -->
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="index.html">Yimiao Yu</a>
+        <div class="nav__links">
+          <a class="nav__link nav__link--active" href="index.html" aria-current="page">About</a>
+          <a class="nav__link" href="publications.html">Publications</a>
+          <a class="nav__link" href="cv.html">CV</a>
+          <a class="nav__link" href="blog/">Blog</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+            <span class="theme-toggle__dot" aria-hidden="true"></span>
+            <span data-theme-label>Dark</span>
+          </button>
+        </div>
+      </nav>
+
+      <main>
+
+        <!-- ══ MASTHEAD ══ -->
+        <header class="masthead">
+          <div class="masthead__eyebrow">M.S. Data Science · NYU Center for Data Science</div>
+          <div class="rule-double" aria-hidden="true"></div>
+          <h1 class="masthead__title">Yimiao Yu</h1>
+          <p class="masthead__tagline">Studying how deep networks memorize — and what pure noise can still teach them.</p>
+          <div class="rule-single" aria-hidden="true"></div>
+          <div class="masthead__contact">
+            <span class="nowrap">New York, NY</span><span class="sep" aria-hidden="true">·</span>
+            <a href="mailto:yy5915@nyu.edu">yy5915@nyu.edu</a><span class="sep" aria-hidden="true">·</span>
+            <a href="https://github.com/feima3333">github.com/feima3333</a>
+          </div>
+          <div class="masthead__status">
+            <span class="masthead__status-dot" aria-hidden="true"></span>
+            Open to research collaborations &amp; internships
+          </div>
+        </header>
+
+        <!-- ══ PHOTO ══ -->
+        <div class="photo">
+          <div class="photo__frame">
+            <img class="photo__img" src="assets/img/photo-full.jpg"
+                 alt="Yimiao Yu photographed outdoors" width="460" height="345">
+          </div>
+        </div>
+
+        <!-- ══ ABOUT ══ -->
+        <section class="section" aria-labelledby="about-label">
+          <div class="section-head" data-reveal>
+            <div class="section-head__ornament" aria-hidden="true">⁂</div>
+            <div class="section-head__label" id="about-label">About</div>
+          </div>
+          <div class="prose" data-reveal>
+            <p class="prose__lead"><span class="dropcap" aria-hidden="true">I</span>'m a data science master's student at NYU, working on the science of deep learning. My current focus: deep networks can memorize entirely random labels — and that memorization is not a dead end. It transfers, it accelerates later learning, and it has structure worth mapping.</p>
+            <p class="prose__secondary">Before New York I studied data science in Zhoushan, an island city in China — B.S. at Zhejiang Ocean University, 2025.</p>
+          </div>
+
+          <div class="timeline" data-reveal>
+            <div class="timeline__row">
+              <span class="timeline__years">2025 — 2027</span>
+              <span class="timeline__detail">M.S. Data Science, <span class="muted">NYU Center for Data Science — New York</span></span>
+            </div>
+            <div class="timeline__row">
+              <span class="timeline__years">— 2025</span>
+              <span class="timeline__detail">B.S. Data Science, <span class="muted">Zhejiang Ocean University — Zhoushan</span></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ RESEARCH ══ -->
+        <section class="section section--research" aria-labelledby="research-label">
+          <div class="section-head" data-reveal>
+            <div class="section-head__ornament" aria-hidden="true">⁂</div>
+            <div class="section-head__label" id="research-label">Research</div>
+          </div>
+          <article class="paper" data-reveal>
+            <div class="paper__meta">Working paper · Targeting a NeurIPS workshop · 2026</div>
+            <h2 class="paper__title">Scaling Laws and Transfer Effects in Random Label Memorization</h2>
+            <div class="paper__authors">Yimiao Yu &amp; Florentin Guth — NYU Center for Data Science</div>
+            <p class="paper__summary">Pretraining on one random-label assignment accelerates memorizing a different one. The effect survives random-pixel inputs, requires a consistent input–output mapping, and is carried mainly by convolutional weights.</p>
+          </article>
+        </section>
+
+      </main>
+
+      <!-- ══ FOOTER ══ -->
+      <footer class="footer">
+        <span class="footer__name">Yimiao Yu</span>
+        <span class="footer__copy">© 2026 — New York, NY</span>
+        <div class="footer__links">
+          <a href="mailto:yy5915@nyu.edu">Email</a>
+          <a href="https://github.com/feima3333">GitHub</a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</body>
+</html>
