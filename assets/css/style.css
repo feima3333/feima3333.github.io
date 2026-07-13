@@ -2,18 +2,17 @@
    Yimiao Yu — Personal website
    "Letterpress, with a wink" design system v2
 
-   Full-width banded layout (no side rails): sections are horizontal bands
-   that alternate background tone, in the manner of clean academic pages.
-   The letterpress voice (EB Garamond display, ⁂ ornaments, double rules)
-   stays; a few quiet adventurer touches (hero-card photo frame, the
-   Adventure Log, "open to new quests") give it play without costume.
+   Compact academic profile: identity and biography share the first view,
+   followed by an Adventure Log. Publications live on their own page.
+   The letterpress voice (EB Garamond display, ⁂ ornaments, warm paper tones)
+   stays; a few quiet adventurer touches give it play without costume.
 
    Sections:
      1. Tokens        — oklch custom properties, light + dark
      2. Base          — reset, typography defaults, links, selection
      3. Layout        — bands + centered inner wrap
      4. Nav           — sticky, backdrop-blur, theme-toggle pill
-     5. Hero          — masthead (left) + hero-card photo (right)
+     5. Profile       — identity (left) + biography (right)
      6. Section heads — ⁂ ornament + small-caps label
      7. Components    — prose, interests/education duo, adventure log,
                         research entry, project list, page masthead
@@ -43,14 +42,15 @@
   --font-display: 'EB Garamond', Georgia, serif;     /* display face — letterpress   */
   --wrap-width: 1280px;
 
-  /* Responsive type scale: compact on laptops, comfortably sized on wide displays. */
-  --text-base: clamp(17px, calc(14px + 0.32vw), 22px);
-  --text-prose: clamp(18px, 1.05rem, 23px);
-  --text-body: clamp(16.5px, 0.95rem, 21px);
-  --text-small: clamp(15px, 0.82rem, 18px);
-  --text-label: clamp(14px, 0.75rem, 16px);
-  --text-nav: clamp(13.5px, 0.75rem, 16px);
-  --text-micro: clamp(12.5px, 0.68rem, 14.5px);
+  /* A restrained fluid scale: readable on laptops, fuller on wide displays. */
+  --text-base: clamp(17px, calc(15.5px + 0.18vw), 20px);
+  --text-prose: clamp(18px, 1.05rem, 21px);
+  --text-body: clamp(17px, 0.95rem, 19px);
+  --text-small: clamp(15.5px, 0.82rem, 17px);
+  --text-label: clamp(14px, 0.76rem, 16px);
+  --text-nav: clamp(14px, 0.78rem, 16px);
+  --text-micro: clamp(13px, 0.7rem, 14.5px);
+  --text-section: clamp(32px, 1.9rem, 38px);
 }
 
 :root[data-theme="dark"] {
@@ -88,10 +88,15 @@ body {
   color: var(--ink);
   font-family: var(--font);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 425;
   line-height: 1.6;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   transition: background 0.4s ease, color 0.4s ease;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
 }
 
 h1,
@@ -148,7 +153,7 @@ button:focus-visible {
 }
 
 .band {
-  padding: 64px 0 72px;
+  padding: 52px 0 60px;
 }
 
 .band--alt {
@@ -377,6 +382,101 @@ button:focus-visible {
   filter: var(--photo-filter);
 }
 
+/* --- Compact profile: identity column + biography column --- */
+.hero--profile {
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  gap: 72px;
+  align-items: start;
+  padding-block: 56px 60px;
+}
+
+.profile__identity {
+  text-align: center;
+}
+
+.profile__identity .photo {
+  justify-self: center;
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.profile__name {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 3rem, 60px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.profile__role {
+  margin: 18px auto 0;
+  max-width: 28ch;
+  font-family: var(--font-display);
+  font-size: clamp(21px, 1.2rem, 25px);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--ink-2);
+  text-wrap: balance;
+}
+
+.profile__affiliation {
+  margin-top: 10px;
+  font-size: var(--text-small);
+  color: var(--ink-3);
+}
+
+.profile__contact {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: var(--text-small);
+}
+
+.profile__contact a {
+  border-bottom: 1px solid var(--line);
+}
+
+.profile__status {
+  margin-top: 20px;
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  line-height: 1.55;
+}
+
+.profile__bio {
+  padding-top: 8px;
+}
+
+.profile__eyebrow {
+  font-size: var(--text-label);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.profile__heading {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 2.55rem, 52px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.profile__bio .prose {
+  margin: 22px 0 0;
+  max-width: 62ch;
+}
+
+.profile__bio .duo {
+  margin: 34px 0 0;
+  max-width: none;
+  gap: 32px 56px;
+}
+
 /* ============================================================================
    6. SECTION HEADS — ⁂ ornament + small-caps label, centered
    ============================================================================ */
@@ -394,11 +494,14 @@ button:focus-visible {
 }
 
 .section-head__label {
-  margin-top: 10px;
-  font-size: var(--text-label);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-wrap: balance;
 }
 
 /* ============================================================================
@@ -408,10 +511,10 @@ button:focus-visible {
 /* --- Prose + drop cap --- */
 .prose {
   margin: 30px auto 0;
-  max-width: 68ch;
+  max-width: 64ch;
   text-align: left;
   font-size: var(--text-prose);
-  line-height: 1.68;
+  line-height: 1.62;
   text-wrap: pretty;
 }
 
@@ -466,18 +569,6 @@ button:focus-visible {
 
 .duo__list li {
   position: relative;
-  padding-left: 24px;
-}
-
-.duo__list li.edu__detail {
-  padding-left: 0;
-}
-
-.duo__list .fleuron {
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-family: var(--font-display);
 }
 
 .edu__years {
@@ -494,12 +585,51 @@ button:focus-visible {
   font-size: var(--text-small);
 }
 
-/* --- Adventure log: dated news rows --- */
-.log {
+/* --- Adventure log: gently looping vertical ledger --- */
+.log-viewport {
+  position: relative;
   margin: 34px auto 0;
   max-width: 68ch;
+  height: 276px;
+  overflow: hidden;
   text-align: left;
   border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.log-viewport::before,
+.log-viewport::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  height: 34px;
+  pointer-events: none;
+}
+
+.log-viewport::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+.log-viewport::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg), transparent);
+}
+
+.log-viewport:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.log-track {
+  will-change: transform;
+}
+
+.log {
+  margin: 0;
+  max-width: none;
 }
 
 .log__row {
@@ -769,6 +899,20 @@ button:focus-visible {
       animation: none;
     }
   }
+
+  .log-viewport {
+    height: auto;
+    overflow: visible;
+  }
+
+  .log-viewport::before,
+  .log-viewport::after {
+    display: none;
+  }
+
+  .log-track {
+    will-change: auto;
+  }
 }
 
 /* ============================================================================
@@ -799,6 +943,23 @@ button:focus-visible {
     justify-self: center;
     max-width: min(400px, 78vw);
   }
+
+  .hero--profile {
+    gap: 46px;
+  }
+
+  .profile__bio {
+    padding-top: 0;
+  }
+
+  .profile__bio .prose {
+    margin-inline: auto;
+  }
+
+  .profile__bio .duo {
+    margin-inline: auto;
+  }
+
 }
 
 @media (max-width: 640px) {
@@ -807,7 +968,7 @@ button:focus-visible {
   }
 
   .band {
-    padding: 44px 0 52px;
+    padding: 40px 0 46px;
   }
 
   .nav__inner {
@@ -818,13 +979,37 @@ button:focus-visible {
 
   .nav__links {
     gap: 12px 18px;
-    font-size: 12.5px;
+    font-size: 13px;
     flex-wrap: wrap;
     justify-content: flex-end;
   }
 
   .duo {
     grid-template-columns: 1fr;
+  }
+
+  .hero--profile {
+    padding-block: 42px 48px;
+  }
+
+  .profile__identity .photo {
+    max-width: min(300px, 72vw);
+  }
+
+  .profile__name {
+    margin-top: 24px;
+  }
+
+  .profile__bio {
+    text-align: left;
+  }
+
+  .profile__bio .duo {
+    gap: 30px;
+  }
+
+  .log-viewport {
+    height: 320px;
   }
 
   .page-head {
