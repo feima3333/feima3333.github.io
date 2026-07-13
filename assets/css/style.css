@@ -787,8 +787,8 @@ button:focus-visible {
 }
 
 .footer__inner {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: baseline;
   gap: 24px;
   font-size: var(--text-label);
@@ -801,6 +801,7 @@ button:focus-visible {
   color: var(--ink);
   white-space: nowrap;
   flex-shrink: 0;
+  justify-self: start;
 }
 
 .footer__copy {
@@ -808,6 +809,7 @@ button:focus-visible {
   text-transform: uppercase;
   font-size: var(--text-micro);
   white-space: nowrap;
+  justify-self: center;
 }
 
 .footer__links {
@@ -816,6 +818,7 @@ button:focus-visible {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: var(--text-micro);
+  justify-self: end;
 }
 
 .footer__links a {
@@ -1022,9 +1025,15 @@ button:focus-visible {
   }
 
   .footer__inner {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
+    justify-items: start;
     gap: 12px;
+  }
+
+  .footer__name,
+  .footer__copy,
+  .footer__links {
+    justify-self: start;
   }
 }
 

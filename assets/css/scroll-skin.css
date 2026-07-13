@@ -1,0 +1,325 @@
+/* Optional archive skin. The standard homepage remains the default. */
+
+.skin-stage {
+  position: relative;
+  flex: 1;
+}
+
+.skin-roll {
+  display: none;
+}
+
+.skin-footer {
+  text-align: center;
+}
+
+.skin-seal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 10px;
+  padding: 0;
+  border: 0;
+  color: var(--ink-3);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.skin-seal:hover {
+  color: var(--accent);
+}
+
+.skin-seal__mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  line-height: 1;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.skin-seal:hover .skin-seal__mark,
+.skin-seal:focus-visible .skin-seal__mark {
+  transform: rotate(12deg) scale(1.04);
+  box-shadow: 0 0 0 4px color-mix(in oklch, currentColor 12%, transparent);
+}
+
+.skin-seal__label {
+  position: absolute;
+  left: calc(100% + 9px);
+  top: 50%;
+  opacity: 0;
+  transform: translate(-4px, -50%);
+  white-space: nowrap;
+  font-size: var(--text-micro);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.skin-seal:hover .skin-seal__label,
+.skin-seal:focus-visible .skin-seal__label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+body[data-skin="scroll"] {
+  --bg: #d7bb84;
+  --band-alt: transparent;
+  --panel: #b99660;
+  --ink: #2b2015;
+  --ink-2: #4a3827;
+  --ink-3: #715940;
+  --line: rgb(66 43 25 / 0.45);
+  --line-soft: rgb(66 43 25 / 0.2);
+  --accent: #783b31;
+  --nav-bg: rgb(13 11 9 / 0.92);
+  --scroll-display: 'Cinzel', 'EB Garamond', Georgia, serif;
+  background: #0d0b09;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgb(118 78 41 / 0.18), transparent 45%),
+    url("../img/paper-noise.svg");
+  background-size: auto, 420px 420px;
+}
+
+body[data-skin="scroll"] .nav {
+  border-bottom-color: rgb(219 194 144 / 0.16);
+}
+
+body[data-skin="scroll"] .nav__brand,
+body[data-skin="scroll"] .nav__link,
+body[data-skin="scroll"] .theme-toggle {
+  color: #d9c9a3;
+}
+
+body[data-skin="scroll"] .nav__brand,
+body[data-skin="scroll"] .nav__link {
+  font-family: var(--scroll-display);
+  font-weight: 600;
+}
+
+body[data-skin="scroll"] .nav__brand {
+  letter-spacing: 0.045em;
+}
+
+body[data-skin="scroll"] .nav__link--active {
+  color: #e7d5aa;
+  border-bottom-color: #b88754;
+}
+
+body[data-skin="scroll"] .skin-stage {
+  width: min(96vw, 1600px);
+  margin: 28px auto 42px;
+  padding-inline: clamp(54px, 7vw, 110px);
+}
+
+body[data-skin="scroll"] .skin-paper {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background-color: #d7bb84;
+  background-image:
+    radial-gradient(ellipse at 50% 32%, rgb(255 244 211 / 0.38), transparent 57%),
+    radial-gradient(circle at 13% 22%, rgb(102 62 28 / 0.09), transparent 16%),
+    radial-gradient(circle at 86% 78%, rgb(93 51 23 / 0.08), transparent 19%),
+    linear-gradient(90deg, rgb(72 43 20 / 0.2), transparent 6%, transparent 94%, rgb(72 43 20 / 0.2)),
+    linear-gradient(180deg, rgb(91 52 22 / 0.11), transparent 5%, transparent 95%, rgb(91 52 22 / 0.13)),
+    url("../img/paper-noise.svg"),
+    linear-gradient(#d9be89, #ceb078);
+  background-size: auto, auto, auto, auto, auto, 360px 360px, auto;
+  border-top: 2px solid rgb(94 57 29 / 0.35);
+  border-bottom: 2px solid rgb(94 57 29 / 0.35);
+  border-radius: 9px / 16px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 239 196 / 0.48),
+    inset 0 -1px 0 rgb(77 44 20 / 0.34),
+    0 32px 80px rgb(0 0 0 / 0.7),
+    0 8px 24px rgb(0 0 0 / 0.5);
+}
+
+body[data-skin="scroll"] .skin-paper::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(88deg, transparent 0 11px, rgb(76 45 20 / 0.018) 12px, transparent 13px 27px),
+    repeating-linear-gradient(2deg, transparent 0 17px, rgb(255 244 212 / 0.018) 18px, transparent 19px 41px);
+  box-shadow:
+    inset 0 0 46px rgb(60 34 14 / 0.27),
+    inset 0 12px 18px rgb(82 48 21 / 0.08),
+    inset 0 -14px 20px rgb(82 48 21 / 0.1);
+}
+
+body[data-skin="scroll"] .skin-paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-skin="scroll"] .skin-roll {
+  display: block;
+  position: absolute;
+  z-index: 4;
+  top: -12px;
+  bottom: -12px;
+  width: clamp(80px, 7.1vw, 108px);
+  border: 1px solid rgb(77 46 23 / 0.45);
+  border-radius: 48% / 25px;
+  background-image:
+    radial-gradient(ellipse at 50% 8%, rgb(255 235 187 / 0.42), transparent 23%),
+    linear-gradient(90deg, #694321, #b78950 11%, #e1bd80 32%, #f0d49d 51%, #c2955b 76%, #704820),
+    url("../img/paper-noise.svg");
+  background-blend-mode: screen, multiply, normal;
+  background-size: auto, auto, 310px 310px;
+  box-shadow:
+    inset 13px 0 17px rgb(56 31 13 / 0.3),
+    inset -14px 0 18px rgb(56 31 13 / 0.28),
+    inset 0 0 0 1px rgb(255 235 190 / 0.16),
+    0 18px 32px rgb(0 0 0 / 0.55);
+}
+
+body[data-skin="scroll"] .skin-roll::before,
+body[data-skin="scroll"] .skin-roll::after {
+  content: "";
+  position: absolute;
+  left: -3%;
+  width: 106%;
+  height: 25px;
+  border: 1px solid rgb(83 49 22 / 0.45);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 35%, #f4dba8 0 28%, #c19054 67%, #70451f 100%),
+    url("../img/paper-noise.svg");
+  box-shadow:
+    inset 0 2px 3px rgb(255 237 195 / 0.32),
+    0 2px 5px rgb(0 0 0 / 0.45);
+}
+
+body[data-skin="scroll"] .skin-roll::before {
+  top: -6px;
+}
+
+body[data-skin="scroll"] .skin-roll::after {
+  bottom: -6px;
+  transform: rotate(180deg);
+}
+
+body[data-skin="scroll"] .skin-roll--left {
+  left: 0;
+}
+
+body[data-skin="scroll"] .skin-roll--right {
+  right: 0;
+}
+
+body[data-skin="scroll"] .band {
+  background: transparent;
+}
+
+body[data-skin="scroll"] .hero--profile {
+  padding: 58px 26px 48px;
+}
+
+body[data-skin="scroll"] .profile__heading {
+  font-size: clamp(42px, 3.2vw, 50px);
+}
+
+body[data-skin="scroll"] .profile__name,
+body[data-skin="scroll"] .profile__heading,
+body[data-skin="scroll"] .section-head__label,
+body[data-skin="scroll"] .duo__title {
+  font-family: var(--scroll-display);
+  font-weight: 600;
+  letter-spacing: 0.045em;
+  text-shadow:
+    0 -1px 0 rgb(73 39 18 / 0.28),
+    0 1px 0 rgb(255 240 201 / 0.28);
+}
+
+body[data-skin="scroll"] .profile__name,
+body[data-skin="scroll"] .profile__heading,
+body[data-skin="scroll"] .section-head__label {
+  color: #2b1d12;
+}
+
+body[data-skin="scroll"] .profile__name {
+  font-size: clamp(39px, 2.75rem, 55px);
+  letter-spacing: 0.055em;
+}
+
+body[data-skin="scroll"] .section-head__ornament {
+  color: var(--accent);
+  text-shadow: 0 1px 0 rgb(255 240 201 / 0.35);
+}
+
+body[data-skin="scroll"] .profile__bio .prose {
+  font-size: clamp(19px, 1.02rem, 21px);
+}
+
+body[data-skin="scroll"] .duo__title {
+  color: var(--ink);
+  font-family: var(--scroll-display);
+  font-size: clamp(22px, 1.25rem, 25px);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  border-bottom-color: rgb(66 43 25 / 0.3);
+}
+
+body[data-skin="scroll"] .log-viewport {
+  margin-bottom: 12px;
+}
+
+body[data-skin="scroll"] .log-viewport::before,
+body[data-skin="scroll"] .log-viewport::after {
+  display: none;
+}
+
+body[data-skin="scroll"] .footer {
+  color: #d9c9a3;
+  border-top-color: rgb(217 201 163 / 0.2);
+  background: #0d0b09;
+}
+
+body[data-skin="scroll"] .footer a,
+body[data-skin="scroll"] .skin-seal {
+  color: #d9c9a3;
+}
+
+@media (max-width: 760px) {
+  body[data-skin="scroll"] .skin-stage {
+    width: calc(100% - 16px);
+    padding-inline: 0;
+  }
+
+  body[data-skin="scroll"] .skin-roll {
+    display: none;
+  }
+
+  body[data-skin="scroll"] .skin-paper {
+    border-radius: 8px;
+  }
+
+  body[data-skin="scroll"] .hero--profile {
+    padding-inline: 0;
+  }
+
+  .skin-seal__label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-seal__mark,
+  .skin-seal__label {
+    transition: none;
+  }
+}
