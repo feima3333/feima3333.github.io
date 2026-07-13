@@ -41,7 +41,16 @@
 
   --font: 'Source Serif 4', Georgia, serif;          /* text face — sturdy on screen */
   --font-display: 'EB Garamond', Georgia, serif;     /* display face — letterpress   */
-  --wrap-width: 1060px;
+  --wrap-width: 1280px;
+
+  /* Responsive type scale: compact on laptops, comfortably sized on wide displays. */
+  --text-base: clamp(17px, calc(14px + 0.28vw), 20px);
+  --text-prose: clamp(18px, 1.05rem, 21px);
+  --text-body: clamp(16.5px, 0.95rem, 19px);
+  --text-small: clamp(15px, 0.82rem, 16.5px);
+  --text-label: clamp(14px, 0.75rem, 15px);
+  --text-nav: clamp(13.5px, 0.75rem, 15px);
+  --text-micro: clamp(12.5px, 0.68rem, 13.5px);
 }
 
 :root[data-theme="dark"] {
@@ -69,6 +78,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  font-size: var(--text-base);
 }
 
 body {
@@ -77,8 +87,9 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   transition: background 0.4s ease, color 0.4s ease;
 }
@@ -172,7 +183,7 @@ button:focus-visible {
 
 .nav__brand {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: clamp(21px, 1.15rem, 24px);
   font-weight: 500;
 }
 
@@ -180,8 +191,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: 30px;
-  font-size: 13.5px;
-  letter-spacing: 0.18em;
+  font-size: var(--text-nav);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -202,8 +213,8 @@ button:focus-visible {
 /* Theme-toggle pill */
 .theme-toggle {
   font-family: var(--font);
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: var(--text-micro);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-2);
   background: none;
@@ -249,8 +260,8 @@ button:focus-visible {
 }
 
 .masthead__eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.26em;
+  font-size: var(--text-label);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -281,7 +292,7 @@ button:focus-visible {
 .masthead__tagline {
   margin-top: 24px;
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: clamp(26px, 1.45rem, 30px);
   font-style: italic;
   font-weight: 400;
   color: var(--ink-2);
@@ -296,7 +307,7 @@ button:focus-visible {
 
 .masthead__contact {
   margin-top: 22px;
-  font-size: 15px;
+  font-size: clamp(15.5px, 0.85rem, 17px);
   color: var(--ink-2);
   display: flex;
   gap: 14px;
@@ -323,8 +334,8 @@ button:focus-visible {
 
 .masthead__status {
   margin-top: 18px;
-  font-size: 13px;
-  letter-spacing: 0.2em;
+  font-size: var(--text-label);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
   line-height: 1.7;
@@ -384,8 +395,8 @@ button:focus-visible {
 
 .section-head__label {
   margin-top: 10px;
-  font-size: 14px;
-  letter-spacing: 0.26em;
+  font-size: var(--text-label);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -397,10 +408,10 @@ button:focus-visible {
 /* --- Prose + drop cap --- */
 .prose {
   margin: 30px auto 0;
-  max-width: 62ch;
+  max-width: 68ch;
   text-align: left;
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: var(--text-prose);
+  line-height: 1.68;
   text-wrap: pretty;
 }
 
@@ -426,7 +437,7 @@ button:focus-visible {
 /* --- Interests / Education duo (side-by-side columns under the bio) --- */
 .duo {
   margin: 48px auto 0;
-  max-width: 62ch;
+  max-width: 44rem;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 40px 64px;
@@ -434,8 +445,8 @@ button:focus-visible {
 }
 
 .duo__title {
-  font-size: 13px;
-  letter-spacing: 0.26em;
+  font-size: var(--text-label);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   padding-bottom: 12px;
@@ -449,8 +460,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: var(--text-body);
+  line-height: 1.55;
 }
 
 .duo__list li {
@@ -474,19 +485,19 @@ button:focus-visible {
   font-family: var(--font-display);
   font-variant: small-caps;
   letter-spacing: 0.12em;
-  font-size: 14.5px;
+  font-size: var(--text-label);
   color: var(--accent);
 }
 
 .edu__detail .muted {
   display: block;
-  font-size: 15px;
+  font-size: var(--text-small);
 }
 
 /* --- Adventure log: dated news rows --- */
 .log {
   margin: 34px auto 0;
-  max-width: 62ch;
+  max-width: 68ch;
   text-align: left;
   border-top: 1px solid var(--line-soft);
 }
@@ -504,14 +515,14 @@ button:focus-visible {
   font-family: var(--font-display);
   font-variant: small-caps;
   letter-spacing: 0.12em;
-  font-size: 15px;
+  font-size: var(--text-label);
   color: var(--accent);
   white-space: nowrap;
 }
 
 .log__text {
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: var(--text-body);
+  line-height: 1.6;
   color: var(--ink-2);
 }
 
@@ -522,13 +533,13 @@ button:focus-visible {
 /* --- Research entry --- */
 .paper {
   margin: 32px auto 0;
-  max-width: 60ch;
+  max-width: 66ch;
   text-align: center;
 }
 
 .paper__meta {
-  font-size: 13px;
-  letter-spacing: 0.2em;
+  font-size: var(--text-label);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
@@ -536,7 +547,7 @@ button:focus-visible {
 .paper__title {
   margin-top: 16px;
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: clamp(30px, 1.7rem, 34px);
   font-weight: 500;
   line-height: 1.25;
   text-wrap: pretty;
@@ -544,14 +555,14 @@ button:focus-visible {
 
 .paper__authors {
   margin-top: 12px;
-  font-size: 16px;
+  font-size: var(--text-body);
   color: var(--ink-2);
   font-style: italic;
 }
 
 .paper__summary {
   margin-top: 18px;
-  font-size: 16.5px;
+  font-size: var(--text-base);
   line-height: 1.65;
   color: var(--ink-2);
   text-align: left;
@@ -583,7 +594,7 @@ button:focus-visible {
 .page-tagline {
   margin: 26px auto 0;
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: clamp(24px, 1.35rem, 28px);
   font-style: italic;
   color: var(--ink-2);
   max-width: 24em;
@@ -595,7 +606,7 @@ button:focus-visible {
 /* --- Compact list row for "Selected Projects": date column + body --- */
 .pub-list {
   margin: 32px auto 0;
-  max-width: 60ch;
+  max-width: 66ch;
   border-top: 1px solid var(--line-soft);
   text-align: left;
 }
@@ -610,21 +621,21 @@ button:focus-visible {
 
 .pub-list__date {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--text-label);
   font-variant: small-caps;
   letter-spacing: 0.12em;
   color: var(--accent);
 }
 
 .pub-list__title {
-  font-size: 17px;
+  font-size: var(--text-body);
   font-weight: 500;
 }
 
 .pub-list__desc {
   margin-top: 6px;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: var(--text-small);
+  line-height: 1.55;
   color: var(--ink-2);
 }
 
@@ -640,7 +651,7 @@ button:focus-visible {
   text-align: center;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 15px;
+  font-size: var(--text-small);
   color: var(--ink-3);
   margin-bottom: 20px;
 }
@@ -650,31 +661,31 @@ button:focus-visible {
   justify-content: space-between;
   align-items: baseline;
   gap: 24px;
-  font-size: 14px;
+  font-size: var(--text-label);
   color: var(--ink-3);
 }
 
 .footer__name {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: var(--text-small);
   color: var(--ink);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .footer__copy {
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: var(--text-micro);
   white-space: nowrap;
 }
 
 .footer__links {
   display: flex;
   gap: 20px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: var(--text-micro);
 }
 
 .footer__links a {
