@@ -44,8 +44,8 @@
 
   /* A restrained fluid scale: readable on laptops, fuller on wide displays. */
   --text-base: clamp(17px, calc(15.5px + 0.18vw), 20px);
-  --text-prose: clamp(18px, 1.05rem, 21px);
-  --text-body: clamp(17px, 0.95rem, 19px);
+  --text-prose: clamp(19px, 1.1rem, 22px);
+  --text-body: clamp(18px, 1rem, 20px);
   --text-small: clamp(15.5px, 0.82rem, 17px);
   --text-label: clamp(14px, 0.76rem, 16px);
   --text-nav: clamp(14px, 0.78rem, 16px);
