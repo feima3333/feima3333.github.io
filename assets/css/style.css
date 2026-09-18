@@ -708,6 +708,146 @@ button:focus-visible {
   text-wrap: pretty;
 }
 
+/* --- Instrument: t0 toy (inline SVG + native range slider) --- */
+.instrument__caption {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-body);
+  color: var(--ink-3);
+}
+
+.instrument {
+  margin: 30px auto 0;
+  max-width: 68ch;
+  padding: 24px 0 18px;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  text-align: left;
+}
+
+.instrument__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font);
+  overflow: visible;
+}
+
+.instrument__axis {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.instrument__grid {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 1;
+}
+
+.instrument__label {
+  fill: var(--ink-3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.instrument__curve {
+  fill: none;
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.instrument__curve--base {
+  stroke: var(--ink-2);
+}
+
+.instrument__curve--ref {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 1.5 4;
+}
+
+.instrument__curve--active {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.instrument__ghost {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+}
+
+.instrument__dot {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  transition: fill 0.4s ease;
+}
+
+.instrument__mark {
+  fill: var(--accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13px;
+}
+
+.instrument__mark--muted {
+  fill: var(--ink-3);
+}
+
+.instrument__control {
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  font-size: var(--text-small);
+  color: var(--ink-2);
+}
+
+.instrument__control label {
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.instrument__control input[type="range"] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.instrument__control input[type="range"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.instrument__control output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.instrument__note {
+  margin-top: 18px;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.instrument__note em {
+  color: var(--ink);
+}
+
 /* --- Page masthead (Publications / Blog): smaller than the home hero --- */
 .page-head {
   text-align: center;
@@ -1022,6 +1162,19 @@ button:focus-visible {
 
   .log-viewport {
     height: 320px;
+  }
+
+  .instrument__label {
+    font-size: 15px;
+  }
+
+  .instrument__mark {
+    font-size: 17px;
+  }
+
+  .instrument__control {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .page-head {
