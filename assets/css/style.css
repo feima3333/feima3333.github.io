@@ -683,6 +683,15 @@ button:focus-visible {
   text-wrap: pretty;
 }
 
+.paper__title-note {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--text-body);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
 .paper__authors {
   margin-top: 12px;
   font-size: var(--text-body);
