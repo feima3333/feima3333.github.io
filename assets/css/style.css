@@ -708,6 +708,20 @@ button:focus-visible {
   text-wrap: pretty;
 }
 
+.paper__links {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: var(--text-small);
+}
+
+.paper__links a,
+.prose__link {
+  border-bottom: 1px solid var(--line);
+}
+
 /* --- Page masthead (Publications / Blog): smaller than the home hero --- */
 .page-head {
   text-align: center;

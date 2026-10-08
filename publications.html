@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Publications — Yimiao Yu</title>
-  <meta name="description" content="Publications, working papers, and selected projects by Yimiao Yu, M.S. Data Science at NYU.">
+  <meta name="description" content="Publications and selected projects by Yimiao Yu, M.S. Data Science at NYU.">
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 
@@ -49,18 +49,23 @@
         </header>
       </div>
 
-      <!-- ══ WORKING PAPERS ══ -->
-      <section class="band" aria-labelledby="working-papers-label">
+      <!-- ══ PAPERS ══ -->
+      <section class="band" aria-labelledby="papers-label">
         <div class="wrap">
           <div class="section-head" data-reveal>
             <div class="section-head__ornament" aria-hidden="true">⁂</div>
-            <h2 class="section-head__label" id="working-papers-label">Working Papers</h2>
+            <h2 class="section-head__label" id="papers-label">Papers</h2>
           </div>
           <article class="paper" data-reveal>
-            <div class="paper__meta">2026 · Working paper · Under review</div>
-            <h3 class="paper__title">Working paper on memorization in deep networks <span class="paper__title-note">(details withheld during review)</span></h3>
-            <div class="paper__authors">Yimiao Yu &amp; Florentin Guth — NYU Center for Data Science</div>
-            <p class="paper__summary">What a deep network learns while fitting random labels, and how much of it carries over to the next thing it is asked to fit. Title and abstract will appear here once the review concludes.</p>
+            <div class="paper__meta">2026 · NeurIPS Workshop · Poster</div>
+            <h3 class="paper__title"><a href="https://arxiv.org/abs/2610.00771">Localizing Transfer Between Memorization Tasks</a> <span class="paper__title-note">NeurIPS 2026 Workshop on Neural Network Artifacts as a New Data Modality</span></h3>
+            <div class="paper__authors">Yimiao Yu &amp; Florentin Guth</div>
+            <p class="paper__summary">Memorizing one set of random labels speeds up memorizing another: after a short warm-up, each epoch of pre-training saves about one epoch of fine-tuning. Pre-training on pure noise can even beat training on the downstream task itself. We trace the speedup to a trivial weight-norm effect in the last layer and a structural effect in the convolutional layers, partly carried by their covariance.</p>
+            <div class="paper__links">
+              <a href="https://arxiv.org/abs/2610.00771">arXiv</a>
+              <a href="https://arxiv.org/pdf/2610.00771">PDF</a>
+              <a href="https://github.com/feima3333/transfer-between-memorization-tasks">Code</a>
+            </div>
           </article>
         </div>
       </section>
