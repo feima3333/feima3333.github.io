@@ -155,9 +155,8 @@
             <div class="profile__eyebrow">About</div>
             <h2 class="profile__heading" id="about-label" tabindex="-1">Biography</h2>
             <div class="prose">
-              <p>I'm a curious person working on the science of deep learning. I like practical research: experiments equipped with theory, rather than pure theory.</p>
-              <p>The big question I care about is bias. What a trained network ends up doing reflects both inductive bias, which comes from the architecture, and implicit bias, which comes from the optimizer. Many papers study one or the other. My crazy dream is to take a phenomenon apart and ask how much of it comes from each.</p>
-              <p>Take transfer learning. When pre-training speeds up a later task, how much of that comes from the training configuration, like the learning rate, and how much from the architecture itself?</p>
+              <p>I'm interested in the science of deep learning. I enjoy doing practical research equipped with theory, rather than pure theoretical work.</p>
+              <p>Right now, the big question I care about is bias, both inductive and implicit. People study it in many different ways. I especially care about how the two interact. For example, in the context of transfer learning, when transfer happens, how much of it comes from implicit bias, and how much from inductive bias?</p>
               <p class="prose__secondary">Before New York, I studied data science in Zhoushan, an island city in China — B.S. at Zhejiang Ocean University, 2025.</p>
             </div>
 
@@ -201,53 +200,16 @@
             <div class="paper__meta">2026 · NeurIPS Workshop · Poster</div>
             <h3 class="paper__title"><a href="https://arxiv.org/abs/2610.00771">Localizing Transfer Between Memorization Tasks</a></h3>
             <div class="paper__authors">Yimiao Yu &amp; Florentin Guth</div>
-            <p class="paper__summary">Two results from this project stay with me.</p>
             <ul class="research__points">
-              <li>Pre-training on random pixels with random labels still speeds up memorizing random labels on CIFAR-10. There is nothing to learn from random pixels, which makes this a clean way to study bias.</li>
-              <li>The speedup survives even when we redraw the random pixels every epoch. Upstream accuracy stays at chance, 10%, yet downstream memorization still gets faster. The effect is weaker, but it is there.</li>
+              <li>Pre-training even on random pixels for a few epochs can speed up memorizing CIFAR-10 images with random labels.</li>
+              <li>The speed-up survives even when we redraw the random pixels every epoch.</li>
             </ul>
-            <p class="paper__summary">We have not dug into either one yet. Both are threads I want to keep pulling.</p>
             <div class="paper__links">
               <a href="https://arxiv.org/abs/2610.00771">arXiv</a>
               <a href="https://github.com/feima3333/transfer-between-memorization-tasks">Code</a>
               <a href="publications.html">All publications</a>
             </div>
           </article>
-        </div>
-      </section>
-      <!-- ══ ADVENTURE LOG ══ -->
-      <section class="band" aria-labelledby="log-label">
-        <div class="wrap">
-          <div class="section-head" data-reveal>
-            <div class="section-head__ornament" aria-hidden="true">⁂</div>
-            <h2 class="section-head__label" id="log-label">Adventure Log</h2>
-          </div>
-          <div class="log-viewport" data-adventure-log tabindex="0" aria-label="Adventure log; animation pauses while hovered or focused">
-            <div class="log-track" data-log-track>
-              <div class="log" data-log-list>
-                <div class="log__row">
-                  <span class="log__date">Sep ’26</span>
-                  <p class="log__text"><em>Localizing Transfer Between Memorization Tasks</em>, with Florentin Guth, accepted at a NeurIPS 2026 workshop and posted on arXiv.</p>
-                </div>
-                <div class="log__row">
-                  <span class="log__date">Jul ’26</span>
-                  <p class="log__text">A summer of experiments with Florentin Guth on what a network keeps after memorizing random labels.</p>
-                </div>
-                <div class="log__row">
-                  <span class="log__date">Dec ’25</span>
-                  <p class="log__text">Measured gender bias in 89,893 RateMyProfessor evaluations of teaching: a small but significant pro-male effect.</p>
-                </div>
-                <div class="log__row">
-                  <span class="log__date">Nov ’25</span>
-                  <p class="log__text">Hypothesis-testing quest on 400 films and 1,000+ raters — popularity predicts rating.</p>
-                </div>
-                <div class="log__row">
-                  <span class="log__date">Sep ’25</span>
-                  <p class="log__text">A new chapter begins: started the M.S. in Data Science at NYU, New York.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       </div>

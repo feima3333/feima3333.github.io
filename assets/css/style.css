@@ -202,7 +202,8 @@ button:focus-visible {
 }
 
 .nav__link {
-  color: var(--ink-2);
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .nav__link:hover {
@@ -221,7 +222,8 @@ button:focus-visible {
   font-size: var(--text-micro);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--ink);
+  font-weight: 500;
   background: none;
   border: 1px solid var(--line);
   border-radius: 99px;
