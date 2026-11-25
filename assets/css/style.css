@@ -378,7 +378,7 @@ button:focus-visible {
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 30% 20%;
+  object-position: center;
   filter: var(--photo-filter);
 }
 
@@ -1071,3 +1071,14 @@ button:focus-visible {
     gap: 4px;
   }
 }
+
+/* --- Home: research highlights --- */
+.research__points {
+  margin: 14px 0 0;
+  padding-left: 1.2em;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.research__points li + li { margin-top: 10px; }
+.research__points { text-align: left; }
+.profile__bio .prose p + p:not(.prose__secondary) { margin-top: 14px; }
